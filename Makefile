@@ -2,7 +2,7 @@ OBJECTS = kernel.o vga.o
 ASM = kernel.ao
 CFLAGS = -m32 -ffreestanding
 
-all: kernel_asm kernel_c kernel_ld kernel_grub
+all: kernel_asm kernel_c kernel_ld
 
 $(ASM): %.ao : src/asm/%.asm
 	-mkdir -p build/asm
@@ -25,6 +25,8 @@ kernel_grub:
 	cp src/grub.cfg build/iso/grub/boot/grub/grub.cfg
 	cp build/bin/kernel.bin build/iso/grub/boot/x86_baseline.bin
 	grub-mkrescue -o build/iso/x86_baseline_grub.iso build/iso/grub
+
+iso: kernel_grub
 
 run: all
 	qemu-system-x86_64 -curses -kernel build/bin/kernel.bin
