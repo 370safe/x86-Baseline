@@ -17,10 +17,11 @@ $(OBJECTS): %.o : src/c/%.c
 kernel_c: $(OBJECTS)
 
 kernel_ld:
-	ld -m elf_i386 -T src/ld/link.ld -o kernel $(OBJECTS:%.o=build/c/%.o) $(ASM:%.ao=build/asm/%.ao)
+	-mkdir -p build/bin
+	ld -m elf_i386 -T src/ld/link.ld -o build/bin/kernel $(OBJECTS:%.o=build/c/%.o) $(ASM:%.ao=build/asm/%.ao)
 
 run: all
-	qemu-system-x86_64 -curses -kernel kernel
+	qemu-system-x86_64 -curses -kernel build/bin/kernel
 
 clean:
 	rm -r build/

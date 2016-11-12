@@ -1,8 +1,26 @@
 OUTPUT_FORMAT(elf32-i386)
 ENTRY(start)
 SECTIONS {
-    . = 0x100000;
-    .text : { *(.text) }
-    .data : { *(.data) }
-    .bss  : { *(.bss)  }
+    . = 1M;
+    
+    /* Executable Code */
+    .text : {
+        *(.multiboot) 
+        *(.text) 
+    }
+    
+    /* Read Only Data */
+    .rodata : {
+        *(.rodata)
+    }
+
+    /* Read-Write Initialized Data */
+    .data : { 
+        *(.data)
+    }
+
+    /* Read-Write Uninitialized Data (also stack) */
+    .bss  : { 
+        *(.bss)
+    }
  }
