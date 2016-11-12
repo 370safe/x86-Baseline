@@ -1,6 +1,6 @@
-OBJECTS = kernel.o screen.o
+OBJECTS = kernel.o vga.o
 ASM = kernel.ao
-CFLAGS = -m32 -fno-stack-protector
+CFLAGS = -m32 -ffreestanding
 
 all: kernel_asm kernel_c kernel_ld
 
