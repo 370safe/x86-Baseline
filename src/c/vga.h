@@ -11,6 +11,7 @@
 #define VGA_WHITE    0b000
 #define VGA_BLUE     0b001
 #define VGA_GREEN    0b010
+#define VGA_CYAN     0b011
 #define VGA_RED      0b100
 #define VGA_MAGENTA  0b101
 #define VGA_YELLOW   0b110
