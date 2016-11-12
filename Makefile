@@ -1,4 +1,4 @@
-OBJECTS = kernel.o vga.o
+OBJECTS = kernel.o vga.o str.o
 ASM = kernel.ao
 CFLAGS = -m32 -ffreestanding
 
